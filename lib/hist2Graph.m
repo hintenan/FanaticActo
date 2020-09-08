@@ -36,7 +36,8 @@ function app = hist2Graph(app, varargin)
     
     irange = 1:app.lenDay;
     ir = length(irange);
-
+    
+    app.indRowTop = 1;
     app.indRowBottom = app.BHPixSp * ir - app.BHSpace;
     app.indColumnRight = app.WIDTHFULLDAY;
     app.indColumnRightDouble = app.indColumnRight * 2;

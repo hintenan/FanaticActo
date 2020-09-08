@@ -69,7 +69,11 @@ function app = data2Hist(app, varargin)
     tmpa = app.timeadj;
     tmpb = app.timeadj;
     %tmpb = app.MaskCSVe;
-    %b = app.ind24HR;
+    %b = app.ind24HR
+    app.apppath
+    if ~exist([app.apppath '/tmp_data'], 'dir')
+       mkdir([app.apppath '/tmp_data'])
+    end
     save([app.apppath '/tmp_data/histsome.mat'], 'tmpa', 'tmpb');
     somedate = yyyymmdd(app.timeadj);
     [app.dayList, ~, ~] = unique(somedate);
