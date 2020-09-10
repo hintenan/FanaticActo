@@ -123,8 +123,8 @@ function app = hist2Graph(app, varargin)
     for i = 1:app.lenDay
         app.onsetGuess(i) = app.onset(app.onsetGuessNo(i), i);
     end
-    app.onset
-    app.onsetGuess
-    app.onsetGuessNo
+    %app.onset
+    %app.onsetGuess
+    %app.onsetGuessNo
 end
 
