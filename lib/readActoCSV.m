@@ -4,11 +4,11 @@ function app = readActoCSV(app, CHAMBERKEY, FILEPATH)
     if CHAMBERKEY == -1
         app.fileNamePart = FILEPATH;
         app.fileNamePart = app.fileNamePart(1:end-4);
-        app.fileMaskNamePart = [FILEPATH '/../mask/' num2str(CHAMBERKEY) '/runner' num2str(CHAMBERKEY) 'mask'];
+        app.fileMaskNamePart = [FILEPATH 'mask/' num2str(CHAMBERKEY) '/runner' num2str(CHAMBERKEY) 'mask'];
     
     else
-        app.fileNamePart = [FILEPATH '/' num2str(CHAMBERKEY) '/runner' num2str(CHAMBERKEY)];
-        app.fileMaskNamePart = [FILEPATH '/../mask/' num2str(CHAMBERKEY) '/runner' num2str(CHAMBERKEY) 'mask'];
+        app.fileNamePart = [FILEPATH num2str(CHAMBERKEY) '/runner' num2str(CHAMBERKEY)];
+        app.fileMaskNamePart = [FILEPATH 'mask/' num2str(CHAMBERKEY) '/runner' num2str(CHAMBERKEY) 'mask'];
     end
 
     cc = 1;

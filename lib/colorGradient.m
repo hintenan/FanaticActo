@@ -1,6 +1,7 @@
-function [grad] = colorGradientDiag(app, tmpcolor, gpara)
+function [grad] = colorGradient(app)
     grad = zeros(app.BHPix, app.BWPix);
-
+    tmpcolor = app.ColorSample;
+    gpara = 1;
     if tmpcolor == 1
         colorheavy = '2193b0';
         colorlight = '6dd5ed';

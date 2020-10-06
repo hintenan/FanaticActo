@@ -1,4 +1,4 @@
-function app = hist2Graph(app, varargin)
+function app = hist2Graph(app)
 %%
 %     1.1 Width of bin
 %     1.2 WSpace
@@ -8,16 +8,16 @@ function app = hist2Graph(app, varargin)
 
 %%
     % Width of Bin
-    app.BWPix = 5; % varargin{5}{1}
-    app.BWSpace = 1; % varargin{5}{2};
-    app.BWPixSp = app.BWPix + app.BWSpace;
+    %app.BWPix = 5; % varargin{5}{1}
+    %app.BWSpace = 1; % varargin{5}{2};
+    %app.BWPixSp = app.BWPix + app.BWSpace;
     
     % Default Separation
-    if rem(app.BINHALFHR, 1) == 0
-        app.BinSep = app.BINHALFHR; % bins
-    else
-        app.BinSep = app.BINPERHR;
-    end
+    %if rem(app.BINHALFHR, 1) == 0
+    %    app.BinSep = app.BINHALFHR; % bins
+    %else
+    %    app.BinSep = app.BINPERHR;
+    %end
     % pix related
     if app.BinSep
         app.WIDTHFULLDAY = app.BINPERDAY*app.BWPix + app.BWSpace*((app.BINPERDAY/app.BinSep) - 1);
@@ -31,7 +31,7 @@ function app = hist2Graph(app, varargin)
 
 
     % Color Gradien
-    app.tmpbin = colorGradient(app, varargin{2}, 1);
+    app.tmpbin = colorGradient(app);
     
     
     irange = 1:app.lenDay;
@@ -87,7 +87,8 @@ function app = hist2Graph(app, varargin)
     if app.existMask
         app.actopicCustomMaskDouble = [app.cmask [app.cmask(app.BHPixSp + 1: end, :, :); [app.oneDayPic; app.oneDaySep]]];
     end
-    if varargin{3}
+    
+    if app.LDMask == 1
         app.actopic = app.actopicmaskDouble;
     else
         app.actopic = app.actopicDouble;

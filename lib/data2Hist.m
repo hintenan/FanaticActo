@@ -1,4 +1,4 @@
-function app = data2Hist(app, varargin)
+function app = data2Hist(app)
 %%    
 %    new arangement
 %    1.1 TimeZone
@@ -12,34 +12,34 @@ function app = data2Hist(app, varargin)
 %    4.2 HSpace
 
 %%
-
+    
     % First Level Parameters
     % Adjust TimeZone and Time Shift
-    app.LOCALGMT = 8; % varargin{1}{1}; GMT+8 Taipei
-    app.TIMESHIFT = varargin{1}{2};
+    %app.LOCALGMT = 8; % varargin{1}{1}; GMT+8 Taipei
+    %app.TIMESHIFT = varargin{1}{2};
     
-    app.HRPERDAY = varargin{1}{3};
+    %app.HRPERDAY = varargin{1}{3};
     
     % unuse
-    app.firstDay = varargin{2}{1};
-    app.lastDay = varargin{2}{2};
+    %app.firstDay = varargin{2}{1};
+    %app.lastDay = varargin{2}{2};
     % unuse
     
     % Bins Per Hour
-    app.BINPERHR = varargin{3};
-    app.MINPERBIN = 60/app.BINPERHR;
-    app.BINHALFHR = app.BINPERHR/2;
-    app.BINPERDAY = app.BINPERHR * app.HRPERDAY;
+    %app.BINPERHR = varargin{3};
+    %app.MINPERBIN = 60/app.BINPERHR;
+    %app.BINHALFHR = app.BINPERHR/2;
+    %app.BINPERDAY = app.BINPERHR * app.HRPERDAY;
     
     % Height of Bin
-    app.BHPix = 50; % varargin{4}{1} bin height (pixel)
-    app.BHSpace = varargin{4}{2};
-    app.BHPixSp = app.BHPix + app.BHSpace;
+    %app.BHPix = 50; % varargin{4}{1} bin height (pixel)
+    %app.BHSpace = varargin{4}{2};
+    %app.BHPixSp = app.BHPix + app.BHSpace;
     
     % Parse acto time
     tic
     app.timetag = datetime(app.ActoCSV{2}, 'convertfrom','posixtime') + hours(app.LOCALGMT); % Taipei local time
-    toc
+    
     app.timeadj = app.timetag - hours(app.TIMESHIFT); % 11.5/11.5 cycle
     
     
@@ -70,7 +70,7 @@ function app = data2Hist(app, varargin)
     tmpb = app.timeadj;
     %tmpb = app.MaskCSVe;
     %b = app.ind24HR
-    app.apppath
+    
     if ~exist([app.apppath '/tmp_data'], 'dir')
        mkdir([app.apppath '/tmp_data'])
     end
@@ -119,6 +119,6 @@ function app = data2Hist(app, varargin)
     app.countsPerDay = sum(app.actoHist, 2);
     countsPerDay = app.countsPerDay;
     csvwrite([app.apppath '/tmp_data/CountsPerDay.csv'], [(1:length(countsPerDay))' countsPerDay]);
-    %}
+    toc
 
 end
